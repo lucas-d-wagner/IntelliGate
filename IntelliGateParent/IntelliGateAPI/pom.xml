@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>IntelliGateParent</artifactId>
+		<groupId>br.com.unisenaisc.intelligate</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>IntelliGateAPI</artifactId>
+	<packaging>war</packaging>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>br.com.unisenaisc.intelligate</groupId>
+			<artifactId>IntelliGateAPICommon</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.unisenaisc.intelligate</groupId>
+			<artifactId>IntelliGatePU</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.unisenaisc.intelligate</groupId>
+			<artifactId>IntelliGateModel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.unisenaisc.intelligate</groupId>
+			<artifactId>IntelliGateBusiness</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.unisenaisc.intelligate</groupId>
+			<artifactId>IntelliGateCommon</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
