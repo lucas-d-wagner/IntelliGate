@@ -1,6 +1,6 @@
 package br.com.unisenaisc.intelligate.api.jwt;
 
-import br.com.unisenaisc.intelligate.context.LoginContext;
+import br.com.unisenaisc.intelligate.common.context.LoginContext;
 
 public class ContextRequestCache {
 

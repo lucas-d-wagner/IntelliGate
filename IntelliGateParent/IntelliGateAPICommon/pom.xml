@@ -18,11 +18,6 @@
 
 		<dependency>
 			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGateModel</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
 			<artifactId>IntelliGateCommon</artifactId>
 		</dependency>
 

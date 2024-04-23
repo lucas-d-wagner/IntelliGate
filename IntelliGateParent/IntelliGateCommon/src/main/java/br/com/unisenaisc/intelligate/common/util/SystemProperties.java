@@ -1,4 +1,4 @@
-package br.com.unisenaisc.intelligate.system;
+package br.com.unisenaisc.intelligate.common.util;
 
 public class SystemProperties {
 
@@ -20,5 +20,5 @@ public class SystemProperties {
 			throw new RuntimeException("System Property " +  propertyName + " not found");
 		}
 	}
-	
+
 }

@@ -1,4 +1,4 @@
-package br.com.unisenaisc.intelligate.util;
+package br.com.unisenaisc.intelligate.common.util;
 
 import java.util.Objects;
 

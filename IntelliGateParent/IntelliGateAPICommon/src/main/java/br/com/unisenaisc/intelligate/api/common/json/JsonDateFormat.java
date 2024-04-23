@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import br.com.unisenaisc.intelligate.exception.BusinessException;
+import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
 public class JsonDateFormat {
 

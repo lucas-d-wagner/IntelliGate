@@ -1,4 +1,4 @@
-package br.com.unisenaisc.intelligate.exception;
+package br.com.unisenaisc.intelligate.common.exception;
 
 import javax.ejb.ApplicationException;
 

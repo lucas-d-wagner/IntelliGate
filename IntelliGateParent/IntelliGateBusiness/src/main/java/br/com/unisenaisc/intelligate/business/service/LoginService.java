@@ -1,7 +1,7 @@
-package br.com.unisenaisc.intelligate.service;
+package br.com.unisenaisc.intelligate.business.service;
 
-import br.com.unisenaisc.intelligate.context.LoginContext;
-import br.com.unisenaisc.intelligate.exception.BusinessCheckedException;
+import br.com.unisenaisc.intelligate.common.context.LoginContext;
+import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 
 public class LoginService {
 	

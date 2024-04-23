@@ -12,7 +12,7 @@ import javax.ws.rs.ext.Provider;
 
 import br.com.unisenaisc.intelligate.api.common.dto.ExceptionDTO;
 import br.com.unisenaisc.intelligate.api.common.json.ObjectMapperFactory;
-import br.com.unisenaisc.intelligate.exception.BusinessException;
+import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
 @Provider
 public class ClientResponseExceptionProvider implements ClientResponseFilter {

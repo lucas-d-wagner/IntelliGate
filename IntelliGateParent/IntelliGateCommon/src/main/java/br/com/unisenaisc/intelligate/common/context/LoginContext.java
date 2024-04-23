@@ -1,4 +1,4 @@
-package br.com.unisenaisc.intelligate.context;
+package br.com.unisenaisc.intelligate.common.context;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import br.com.unisenaisc.intelligate.api.common.dto.LoginDTO;
 import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
-import br.com.unisenaisc.intelligate.exception.BusinessCheckedException;
+import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 
 @Path("/auth")
 @Produces(MediaType.APPLICATION_JSON)

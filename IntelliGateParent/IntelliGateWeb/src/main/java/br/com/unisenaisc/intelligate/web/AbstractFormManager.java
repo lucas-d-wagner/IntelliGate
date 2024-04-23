@@ -7,7 +7,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import br.com.unisenaisc.intelligate.util.ExceptionUtil;
+import br.com.unisenaisc.intelligate.common.util.ExceptionUtil;
 import br.com.unisenaisc.intelligate.web.client.ClientRestProxyService;
 
 
