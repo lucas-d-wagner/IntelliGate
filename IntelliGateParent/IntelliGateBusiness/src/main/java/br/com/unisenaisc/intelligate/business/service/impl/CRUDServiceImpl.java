@@ -1,41 +1,80 @@
 package br.com.unisenaisc.intelligate.business.service.impl;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import br.com.unisenaisc.intelligate.common.AbstractEntity;
 import br.com.unisenaisc.intelligate.common.context.LoginContext;
+import br.com.unisenaisc.intelligate.common.repository.IGenericRepository;
 import br.com.unisenaisc.intelligate.common.service.ICRUDService;
+import br.com.unisenaisc.intelligate.common.validator.IGenericValidator;
 
 public abstract class CRUDServiceImpl<E extends AbstractEntity> implements ICRUDService<E> {
 
 	@Override
 	public Collection<E> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getRepository().findAll();
 	}
 
 	@Override
 	public E find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getRepository().find(id);
 	}
 
 	@Override
 	public Long insert(E entity, LoginContext context) {
-		// TODO Auto-generated method stub
-		return null;
+		validateInsert(entity, context);
+		
+		return getRepository().persist(entity).getId();
 	}
 
 	@Override
 	public Long update(Long id, E entity, LoginContext context) {
-		// TODO Auto-generated method stub
-		return null;
+		E entityManaged = getRepository().findNotNull(id);
+
+		safeEdit(entity, entityManaged);
+		
+		validateUpdate(entityManaged, context);
+		
+		return getRepository().persist(entityManaged).getId();
 	}
 
 	@Override
-	public void delete(Long id, LoginContext contexts) {
-		// TODO Auto-generated method stub
+	public void delete(Long id, LoginContext context) {
+		E entity = getRepository().findNotNull(id);
 		
+		validateDelete(entity, context);
+		
+		getRepository().remove(entity);
+	}
+	
+	public abstract void safeEdit(E entity, E entityManaged);
+	
+	public abstract IGenericRepository<E> getRepository();
+
+	public IGenericValidator<E> getValidator() {
+		return null;
+	}
+	
+	private void validateInsert(E entity, LoginContext context) {
+		IGenericValidator<E> validator = getValidator();
+		if(Objects.nonNull(validator)) {
+			validator.validateInsert(entity, context);
+		}
+	}
+	
+	private void validateUpdate(E entity, LoginContext context) {
+		IGenericValidator<E> validator = getValidator();
+		if(Objects.nonNull(validator)) {
+			validator.validateUpdate(entity, context);
+		}
+	}
+
+	private void validateDelete(E entity, LoginContext context) {
+		IGenericValidator<E> validator = getValidator();
+		if(Objects.nonNull(validator)) {
+			validator.validateDelete(entity, context);
+		}
 	}
 	
 }

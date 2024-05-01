@@ -2,25 +2,28 @@ package br.com.unisenaisc.intelligate.api.resource.impl;
 
 import javax.annotation.ManagedBean;
 import javax.transaction.Transactional;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
+import br.com.unisenaisc.intelligate.api.common.converter.AbstractDTOConverter;
+import br.com.unisenaisc.intelligate.api.common.dto.UsuarioDTO;
 import br.com.unisenaisc.intelligate.api.common.resource.UsuarioResource;
-import br.com.unisenaisc.intelligate.api.resource.AbstractResource;
+import br.com.unisenaisc.intelligate.api.converter.UsuarioConverter;
+import br.com.unisenaisc.intelligate.business.service.UsuarioService;
+import br.com.unisenaisc.intelligate.common.service.ICRUDService;
 import br.com.unisenaisc.intelligate.model.Usuario;
 
 @ManagedBean
 @Transactional
-public class UsuarioResourceImpl extends AbstractResource implements UsuarioResource {
+public class UsuarioResourceImpl extends CRUDResourceImpl<Usuario, UsuarioDTO> implements UsuarioResource {
 
 	@Override
-	public Response getTodosRegistros() {
-		
-		Usuario usuario = new Usuario();
-		
-		System.out.println(usuario);
-		
-		return Response.status(Status.FOUND).build();
+	public ICRUDService<Usuario> getService() {
+		return new UsuarioService();
 	}
+
+	@Override
+	public AbstractDTOConverter<Usuario, UsuarioDTO> getConverter() {
+		return new UsuarioConverter();
+	}
+
 
 }

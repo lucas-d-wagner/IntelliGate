@@ -1,21 +1,11 @@
-package br.com.unisenaisc.intelligate.model;
+package br.com.unisenaisc.intelligate.api.common.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import br.com.unisenaisc.intelligate.common.AbstractEntity;
-
-@Entity
-public class Usuario extends AbstractEntity {
+public class UsuarioDTO extends AbstractDTO {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
-
+	
 	private String nome;
 	
 	private String login;
@@ -45,7 +35,7 @@ public class Usuario extends AbstractEntity {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-
+	
 	public String getSenha() {
 		return senha;
 	}

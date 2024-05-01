@@ -6,20 +6,11 @@ import br.com.unisenaisc.intelligate.api.common.converter.AbstractDTOConverter;
 import br.com.unisenaisc.intelligate.api.common.dto.AbstractDTO;
 import br.com.unisenaisc.intelligate.api.common.resource.ICRUDResource;
 import br.com.unisenaisc.intelligate.api.resource.AbstractResource;
-import br.com.unisenaisc.intelligate.business.service.impl.CRUDServiceImpl;
 import br.com.unisenaisc.intelligate.common.AbstractEntity;
+import br.com.unisenaisc.intelligate.common.service.ICRUDService;
 
-public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends AbstractDTO, C extends AbstractDTOConverter<E, DTO>, S extends CRUDServiceImpl<E>> extends AbstractResource implements ICRUDResource<DTO> {
+public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends AbstractDTO> extends AbstractResource implements ICRUDResource<DTO> {
 
-	private S service;
-	
-	private C converter;
-	
-	public CRUDResourceImpl(S service, C converter) {
-		this.service = service;
-		this.converter = converter;
-	}
-	
 	@Override
 	public Collection<DTO> findAll() {
 		Collection<E> entityList = getService().findAll();
@@ -31,7 +22,7 @@ public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends Abs
 		E entity = getService().find(id);
 		return getConverter().convertToDTO(entity);
 	}
-
+ 
 	@Override
 	public Long insert(DTO dto) {
 		E entity = getConverter().convertToEntity(dto);
@@ -49,12 +40,8 @@ public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends Abs
 		getService().delete(id, getLoginContext());
 	}
 	
-	public S getService() {
-		return service;
-	}
-	
-	public C getConverter() {
-		return converter;
-	}
+	public abstract ICRUDService<E> getService();
+
+	public abstract AbstractDTOConverter<E, DTO> getConverter();
 	
 }
