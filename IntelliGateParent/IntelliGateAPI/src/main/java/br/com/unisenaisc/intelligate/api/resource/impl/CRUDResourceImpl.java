@@ -41,7 +41,7 @@ public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends Abs
 	}
 	
 	public abstract ICRUDService<E> getService();
-
+	
 	public abstract AbstractDTOConverter<E, DTO> getConverter();
 	
 }

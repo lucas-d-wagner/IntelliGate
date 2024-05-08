@@ -7,6 +7,10 @@ public class UsuarioConverter extends AbstractDTOConverter<Usuario, UsuarioDTO> 
 
 	@Override
 	public UsuarioDTO convertToDTO(Usuario entity) {
+		if(entity == null) {
+			return null;
+		}
+		
 		UsuarioDTO dto = new UsuarioDTO();
 		
 		dto.setIdUsuario(entity.getIdUsuario());
@@ -19,6 +23,10 @@ public class UsuarioConverter extends AbstractDTOConverter<Usuario, UsuarioDTO> 
 
 	@Override
 	public Usuario convertToEntity(UsuarioDTO dto) {
+		if(dto == null) {
+			return null;
+		}
+
 		Usuario entity = new Usuario();
 		
 		entity.setIdUsuario(dto.getIdUsuario());

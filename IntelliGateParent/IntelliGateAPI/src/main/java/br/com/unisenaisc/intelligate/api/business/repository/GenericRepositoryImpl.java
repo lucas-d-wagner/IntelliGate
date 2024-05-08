@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import javax.ejb.Stateless;
+import javax.annotation.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
@@ -14,17 +14,11 @@ import javax.persistence.TypedQuery;
 import br.com.unisenaisc.intelligate.api.business.model.entity.AbstractEntity;
 import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
-@Stateless
+@ManagedBean
 public abstract class GenericRepositoryImpl<E extends AbstractEntity> implements IGenericRepository<E> {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	private Class<E> entityClass;
-	
-	public GenericRepositoryImpl(Class<E> entityClass) {
-		this.entityClass = entityClass;
-	}
 	
 	@Override
 	public List<E> findAll() {
@@ -35,7 +29,7 @@ public abstract class GenericRepositoryImpl<E extends AbstractEntity> implements
 
 	@Override
 	public E find(Long id) {
-		return entityManager.find(entityClass, id);
+		return entityManager.find(getEntityClass(), id);
 	}
 
 	@Override
@@ -81,7 +75,7 @@ public abstract class GenericRepositoryImpl<E extends AbstractEntity> implements
 
 	@Override
 	public TypedQuery<E> createTypedQuery(String query) {
-		return entityManager.createQuery(query, entityClass);
+		return entityManager.createQuery(query, getEntityClass());
 	}
 	
 	@Override
@@ -104,7 +98,9 @@ public abstract class GenericRepositoryImpl<E extends AbstractEntity> implements
 		}
 	}
 	
+	public abstract Class<E> getEntityClass();
+	
 	private String getEntityName() {
-		return entityClass.getSimpleName();
+		return getEntityClass().getSimpleName();
 	}
 }

@@ -1,14 +1,15 @@
 package br.com.unisenaisc.intelligate.api.business.repository;
 
-import javax.ejb.Stateless;
+import javax.annotation.ManagedBean;
 
 import br.com.unisenaisc.intelligate.api.business.model.entity.Usuario;
 
-@Stateless
+@ManagedBean
 public class UsuarioRepository extends GenericRepositoryImpl<Usuario> {
 
-	public UsuarioRepository() {
-		super(Usuario.class);
+	@Override
+	public Class<Usuario> getEntityClass() {
+		return Usuario.class;
 	}
 
 }
