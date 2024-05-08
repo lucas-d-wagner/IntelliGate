@@ -10,14 +10,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>IntelliGate</module>
 		<module>IntelliGateAPI</module>
-		<module>IntelliGateAPICommon</module>
-		<module>IntelliGatePU</module>
-		<module>IntelliGateModel</module>
-		<module>IntelliGateBusiness</module>
 		<module>IntelliGateWeb</module>
 		<module>IntelliGateCommon</module>
-		<module>IntelliGate</module>
 	</modules>
 
 	<properties>
@@ -35,34 +31,6 @@
 				<artifactId>IntelliGateAPI</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.unisenaisc.intelligate</groupId>
-				<artifactId>IntelliGateAPICommon</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.unisenaisc.intelligate</groupId>
-				<artifactId>IntelliGatePU</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.unisenaisc.intelligate</groupId>
-				<artifactId>IntelliGateModel</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.unisenaisc.intelligate</groupId>
-				<artifactId>IntelliGateBusiness</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
 			</dependency>
 
 			<dependency>

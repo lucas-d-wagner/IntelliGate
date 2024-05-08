@@ -16,11 +16,6 @@
 
 
 	<dependencies>
-
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGateAPICommon</artifactId>
-		</dependency>
 		
 		<dependency>
 			<groupId>br.com.unisenaisc.intelligate</groupId>

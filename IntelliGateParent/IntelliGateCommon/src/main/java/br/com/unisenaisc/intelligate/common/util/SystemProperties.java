@@ -6,7 +6,7 @@ public class SystemProperties {
 	public static final String JWT_TOKEN_EXPIRATION_TIME_MINUTES = "JWTTokenExpirationTimeMinutes";
 	
 	public static Long getJwtTokenExpirationTimeMinutes() {
-		return Long.getLong(JWT_TOKEN_EXPIRATION_TIME_MINUTES, 15);
+		return Long.getLong(JWT_TOKEN_EXPIRATION_TIME_MINUTES, 60);
 	}
 	
 	public static String getJWTPrivateKey() {

@@ -2,12 +2,12 @@ package br.com.unisenaisc.intelligate.api.resource.impl;
 
 import java.util.Collection;
 
-import br.com.unisenaisc.intelligate.api.common.converter.AbstractDTOConverter;
+import br.com.unisenaisc.intelligate.api.business.model.entity.AbstractEntity;
+import br.com.unisenaisc.intelligate.api.business.service.ICRUDService;
 import br.com.unisenaisc.intelligate.api.common.dto.AbstractDTO;
 import br.com.unisenaisc.intelligate.api.common.resource.ICRUDResource;
+import br.com.unisenaisc.intelligate.api.converter.AbstractDTOConverter;
 import br.com.unisenaisc.intelligate.api.resource.AbstractResource;
-import br.com.unisenaisc.intelligate.common.AbstractEntity;
-import br.com.unisenaisc.intelligate.common.service.ICRUDService;
 
 public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends AbstractDTO> extends AbstractResource implements ICRUDResource<DTO> {
 

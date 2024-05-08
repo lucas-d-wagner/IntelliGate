@@ -1,8 +1,7 @@
 package br.com.unisenaisc.intelligate.api.converter;
 
-import br.com.unisenaisc.intelligate.api.common.converter.AbstractDTOConverter;
+import br.com.unisenaisc.intelligate.api.business.model.entity.Usuario;
 import br.com.unisenaisc.intelligate.api.common.dto.UsuarioDTO;
-import br.com.unisenaisc.intelligate.model.Usuario;
 
 public class UsuarioConverter extends AbstractDTOConverter<Usuario, UsuarioDTO> {
 
