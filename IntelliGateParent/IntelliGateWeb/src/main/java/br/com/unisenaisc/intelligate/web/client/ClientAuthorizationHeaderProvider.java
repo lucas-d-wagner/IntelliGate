@@ -1,8 +1,10 @@
 package br.com.unisenaisc.intelligate.web.client;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
@@ -18,11 +20,9 @@ public class ClientAuthorizationHeaderProvider implements ClientRequestFilter {
 	}
 
 	private String getToken() {
-		String token = (String) FacesContext
-									.getCurrentInstance()
-									.getExternalContext()
-									.getSessionMap()
-									.get("token");
+		HttpSession httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		String token = Objects.toString(httpSession.getAttribute("token"), "");
 		return new StringBuilder().append("Bearer ").append(token).toString();
 	}
+	
 }

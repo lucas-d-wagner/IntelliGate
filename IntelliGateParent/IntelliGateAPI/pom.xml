@@ -17,26 +17,6 @@
 
 		<dependency>
 			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGateAPICommon</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGatePU</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGateModel</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
-			<artifactId>IntelliGateBusiness</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>br.com.unisenaisc.intelligate</groupId>
 			<artifactId>IntelliGateCommon</artifactId>
 		</dependency>
 

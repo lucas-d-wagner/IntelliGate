@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import br.com.unisenaisc.intelligate.api.common.dto.LoginDTO;
 import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
@@ -33,8 +34,9 @@ public class LoginManager extends AbstractFormManager {
 		getExternalContext().redirect("login.xhtml");
 	}
 	
-	private void criarSessaoLoginUsuario(TokenDTO token) throws Exception {
-		getExternalContext().getSessionMap().put("token", token.getToken());
+	private void criarSessaoLoginUsuario(TokenDTO tokenDTO) throws Exception {
+		HttpSession httpSession = getHttpSession();
+		httpSession.setAttribute("token", tokenDTO.getToken());
 		getExternalContext().redirect("index.xhtml");
 	}
 	

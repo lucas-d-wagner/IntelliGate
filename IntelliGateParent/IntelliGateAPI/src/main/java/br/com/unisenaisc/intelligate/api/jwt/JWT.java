@@ -8,8 +8,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
 import br.com.unisenaisc.intelligate.api.common.json.ObjectMapperFactory;
-import br.com.unisenaisc.intelligate.context.LoginContext;
-import br.com.unisenaisc.intelligate.system.SystemProperties;
+import br.com.unisenaisc.intelligate.common.context.LoginContext;
+import br.com.unisenaisc.intelligate.common.util.SystemProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
