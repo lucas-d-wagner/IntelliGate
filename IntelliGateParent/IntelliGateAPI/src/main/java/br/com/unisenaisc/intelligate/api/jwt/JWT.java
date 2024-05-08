@@ -6,8 +6,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
-import br.com.unisenaisc.intelligate.api.common.json.ObjectMapperFactory;
+import br.com.unisenaisc.intelligate.common.api.dto.TokenDTO;
+import br.com.unisenaisc.intelligate.common.api.json.ObjectMapperFactory;
 import br.com.unisenaisc.intelligate.common.context.LoginContext;
 import br.com.unisenaisc.intelligate.common.util.SystemProperties;
 import io.jsonwebtoken.Claims;

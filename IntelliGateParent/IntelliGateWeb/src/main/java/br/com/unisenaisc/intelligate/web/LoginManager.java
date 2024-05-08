@@ -6,9 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import br.com.unisenaisc.intelligate.api.common.dto.LoginDTO;
-import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
-import br.com.unisenaisc.intelligate.api.common.resource.LoginResource;
+import br.com.unisenaisc.intelligate.common.api.dto.LoginDTO;
+import br.com.unisenaisc.intelligate.common.api.dto.TokenDTO;
+import br.com.unisenaisc.intelligate.common.api.resource.LoginResource;
 
 @Named
 @RequestScoped

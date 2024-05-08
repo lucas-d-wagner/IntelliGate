@@ -10,8 +10,8 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.Response.Status.Family;
 import javax.ws.rs.ext.Provider;
 
-import br.com.unisenaisc.intelligate.api.common.dto.ExceptionDTO;
-import br.com.unisenaisc.intelligate.api.common.json.ObjectMapperFactory;
+import br.com.unisenaisc.intelligate.common.api.dto.ExceptionDTO;
+import br.com.unisenaisc.intelligate.common.api.json.ObjectMapperFactory;
 import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
 @Provider

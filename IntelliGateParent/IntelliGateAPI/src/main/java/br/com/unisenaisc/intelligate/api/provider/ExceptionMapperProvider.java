@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import br.com.unisenaisc.intelligate.api.common.dto.ExceptionDTO;
+import br.com.unisenaisc.intelligate.common.api.dto.ExceptionDTO;
 import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
 @Provider

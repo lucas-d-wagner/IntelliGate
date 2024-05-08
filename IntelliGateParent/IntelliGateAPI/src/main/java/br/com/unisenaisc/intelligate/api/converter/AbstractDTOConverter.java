@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import br.com.unisenaisc.intelligate.api.business.model.entity.AbstractEntity;
-import br.com.unisenaisc.intelligate.api.common.dto.AbstractDTO;
+import br.com.unisenaisc.intelligate.architecture.entity.AbstractEntity;
+import br.com.unisenaisc.intelligate.common.architecture.restful.AbstractDTO;
 import br.com.unisenaisc.intelligate.common.util.CollectionsUtil;
 
 public abstract class AbstractDTOConverter<E extends AbstractEntity, DTO extends AbstractDTO> {

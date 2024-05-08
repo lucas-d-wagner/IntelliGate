@@ -8,10 +8,10 @@ import javax.ws.rs.core.Application;
 
 import org.reflections.Reflections;
 
-import br.com.unisenaisc.intelligate.api.common.provider.ObjectMapperProvider;
 import br.com.unisenaisc.intelligate.api.provider.AuthenticationFilterProvider;
 import br.com.unisenaisc.intelligate.api.provider.ExceptionMapperProvider;
-import br.com.unisenaisc.intelligate.api.resource.AbstractResource;
+import br.com.unisenaisc.intelligate.architecture.restful.AbstractResource;
+import br.com.unisenaisc.intelligate.common.api.provider.ObjectMapperProvider;
 
 @ApplicationPath("v1")
 public class ApplicationConfig extends Application {

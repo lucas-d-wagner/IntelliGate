@@ -3,12 +3,12 @@ package br.com.unisenaisc.intelligate.api.resource.impl;
 import javax.annotation.ManagedBean;
 import javax.transaction.Transactional;
 
-import br.com.unisenaisc.intelligate.api.business.service.LoginService;
-import br.com.unisenaisc.intelligate.api.common.dto.LoginDTO;
-import br.com.unisenaisc.intelligate.api.common.dto.TokenDTO;
-import br.com.unisenaisc.intelligate.api.common.resource.LoginResource;
 import br.com.unisenaisc.intelligate.api.jwt.JWT;
-import br.com.unisenaisc.intelligate.api.resource.AbstractResource;
+import br.com.unisenaisc.intelligate.architecture.restful.AbstractResource;
+import br.com.unisenaisc.intelligate.business.service.LoginService;
+import br.com.unisenaisc.intelligate.common.api.dto.LoginDTO;
+import br.com.unisenaisc.intelligate.common.api.dto.TokenDTO;
+import br.com.unisenaisc.intelligate.common.api.resource.LoginResource;
 import br.com.unisenaisc.intelligate.common.context.LoginContext;
 import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 
