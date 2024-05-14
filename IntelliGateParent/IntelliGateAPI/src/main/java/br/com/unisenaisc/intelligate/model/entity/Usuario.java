@@ -22,6 +22,8 @@ public class Usuario extends AbstractEntity {
 	@NotBlank
 	private String nome;
 	
+	private boolean administrador;
+	
 	@NotBlank
 	private String login;
 	
@@ -42,6 +44,14 @@ public class Usuario extends AbstractEntity {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public boolean isAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
 	}
 
 	public String getLogin() {

@@ -5,6 +5,7 @@ import java.util.Collection;
 import br.com.unisenaisc.intelligate.api.converter.AbstractDTOConverter;
 import br.com.unisenaisc.intelligate.architecture.entity.AbstractEntity;
 import br.com.unisenaisc.intelligate.architecture.restful.AbstractResource;
+import br.com.unisenaisc.intelligate.common.api.dto.ResponseIdDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.AbstractDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.IDetailCRUDResource;
 
@@ -23,9 +24,10 @@ public abstract class DetailCRUDResourceImpl<D extends AbstractEntity, M extends
 	}
 
 	@Override
-	public Long insert(Long parentId, DTO dto) {
+	public ResponseIdDTO insert(Long parentId, DTO dto) {
 		D entity = getConverter().convertToEntity(dto);
-		return getService().insert(parentId, entity, getLoginContext());
+		Long id = getService().insert(parentId, entity, getLoginContext());
+		return new ResponseIdDTO(id);
 	}
 
 	@Override

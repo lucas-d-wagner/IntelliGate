@@ -8,9 +8,11 @@ import javax.ws.rs.core.MediaType;
 import br.com.unisenaisc.intelligate.common.api.dto.UsuarioDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.ICRUDResource;
 
-@Path("/usuario")
+@Path(UsuarioResource.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public interface UsuarioResource extends ICRUDResource<UsuarioDTO> {
 	
+	public static final String PATH = "/usuario";
+
 }

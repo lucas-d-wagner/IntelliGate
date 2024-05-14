@@ -17,6 +17,7 @@ public class UsuarioService extends CRUDServiceImpl<Usuario> {
 	@Override
 	public void safeEdit(Usuario entity, Usuario entityManaged) {
 		entityManaged.setSenha(entity.getSenha());
+		entityManaged.setAdministrador(entity.isAdministrador());
 	}
 
 	@Override

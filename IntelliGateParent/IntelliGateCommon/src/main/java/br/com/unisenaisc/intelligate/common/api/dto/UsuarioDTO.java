@@ -10,6 +10,8 @@ public class UsuarioDTO extends AbstractDTO {
 	
 	private String nome;
 	
+	private boolean administrador;
+	
 	private String login;
 	
 	private String senha;
@@ -28,6 +30,14 @@ public class UsuarioDTO extends AbstractDTO {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public boolean isAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
 	}
 
 	public String getLogin() {

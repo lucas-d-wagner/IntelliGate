@@ -42,7 +42,7 @@ public class Pessoa extends AbstractEntity {
 	private String telefone;
 	
     @OneToMany(mappedBy = "pessoa")
-    private Set<PessoaVeiculo> pessoaVeiculo;
+    private Set<PessoaVeiculo> veiculos;
 	
 	public Long getIdPessoa() {
 		return idPessoa;
@@ -84,12 +84,12 @@ public class Pessoa extends AbstractEntity {
 		this.telefone = telefone;
 	}
 	
-	public Set<PessoaVeiculo> getPessoaVeiculo() {
-		return pessoaVeiculo;
+	public Set<PessoaVeiculo> getVeiculos() {
+		return veiculos;
 	}
 
-	public void setPessoaVeiculo(Set<PessoaVeiculo> pessoaVeiculo) {
-		this.pessoaVeiculo = pessoaVeiculo;
+	public void setVeiculos(Set<PessoaVeiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	@Override

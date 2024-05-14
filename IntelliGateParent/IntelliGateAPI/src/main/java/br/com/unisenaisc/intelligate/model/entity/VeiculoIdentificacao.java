@@ -19,7 +19,7 @@ public class VeiculoIdentificacao extends AbstractEntity {
 	@Id
 	@SequenceGenerator(name = "VEICULOIDENTIFICACAO_GENERATOR", sequenceName = "IDVEICULOIDENTIFICACAO", allocationSize = 1)
 	@GeneratedValue(generator = "VEICULOIDENTIFICACAO_GENERATOR", strategy = GenerationType.SEQUENCE)
-	private Long idVeiculoIdentificao;
+	private Long idVeiculoIdentificacao;
 
 	@NotNull
     @ManyToOne
@@ -28,12 +28,12 @@ public class VeiculoIdentificacao extends AbstractEntity {
 	
 	private String UUID;
 
-	public Long getIdVeiculoIdentificao() {
-		return idVeiculoIdentificao;
+	public Long getIdVeiculoIdentificacao() {
+		return idVeiculoIdentificacao;
 	}
 
-	public void setIdVeiculoIdentificao(Long idVeiculoIdentificao) {
-		this.idVeiculoIdentificao = idVeiculoIdentificao;
+	public void setIdVeiculoIdentificacao(Long idVeiculoIdentificacao) {
+		this.idVeiculoIdentificacao = idVeiculoIdentificacao;
 	}
 
 	public Veiculo getVeiculo() {
@@ -54,7 +54,7 @@ public class VeiculoIdentificacao extends AbstractEntity {
 
 	@Override
 	public Long getId() {
-		return getIdVeiculoIdentificao();
+		return getIdVeiculoIdentificacao();
 	}
 	
 }

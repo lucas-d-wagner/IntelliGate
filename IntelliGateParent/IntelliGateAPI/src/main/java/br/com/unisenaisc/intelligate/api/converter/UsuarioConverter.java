@@ -15,6 +15,7 @@ public class UsuarioConverter extends AbstractDTOConverter<Usuario, UsuarioDTO> 
 		
 		dto.setIdUsuario(entity.getIdUsuario());
 		dto.setNome(entity.getNome());
+		dto.setAdministrador(entity.isAdministrador());
 		dto.setLogin(entity.getLogin());
 		//NÃO PASSAR A SENHA NO DTO!
 		
@@ -31,6 +32,7 @@ public class UsuarioConverter extends AbstractDTOConverter<Usuario, UsuarioDTO> 
 		
 		entity.setIdUsuario(dto.getIdUsuario());
 		entity.setNome(dto.getNome());
+		entity.setAdministrador(dto.isAdministrador());
 		entity.setLogin(dto.getLogin());
 		entity.setSenha(dto.getSenha());
 		

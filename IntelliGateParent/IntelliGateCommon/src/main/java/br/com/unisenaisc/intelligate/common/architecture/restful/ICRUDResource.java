@@ -9,6 +9,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
+import br.com.unisenaisc.intelligate.common.api.dto.ResponseIdDTO;
+
 public interface ICRUDResource<DTO extends AbstractDTO> {
 
 	@GET
@@ -19,7 +21,7 @@ public interface ICRUDResource<DTO extends AbstractDTO> {
 	DTO find(@PathParam("id") Long id);
 	
 	@POST
-	Long insert(DTO dto);
+	ResponseIdDTO insert(DTO dto);
 	
 	@PUT
 	@Path("{id}")

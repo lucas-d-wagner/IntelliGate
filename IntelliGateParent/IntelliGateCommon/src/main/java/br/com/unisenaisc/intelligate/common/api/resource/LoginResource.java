@@ -11,11 +11,13 @@ import br.com.unisenaisc.intelligate.common.api.dto.LoginDTO;
 import br.com.unisenaisc.intelligate.common.api.dto.TokenDTO;
 import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 
-@Path("/auth")
+@Path(LoginResource.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public interface LoginResource {
 
+	public static final String PATH = "/auth";
+	
 	@POST
 	@Path("/login")
 	@PermitAll

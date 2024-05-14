@@ -5,6 +5,7 @@ import java.util.Collection;
 import br.com.unisenaisc.intelligate.api.converter.AbstractDTOConverter;
 import br.com.unisenaisc.intelligate.architecture.entity.AbstractEntity;
 import br.com.unisenaisc.intelligate.architecture.restful.AbstractResource;
+import br.com.unisenaisc.intelligate.common.api.dto.ResponseIdDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.AbstractDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.ICRUDResource;
 
@@ -23,9 +24,10 @@ public abstract class CRUDResourceImpl<E extends AbstractEntity, DTO extends Abs
 	}
  
 	@Override
-	public Long insert(DTO dto) {
+	public ResponseIdDTO insert(DTO dto) {
 		E entity = getConverter().convertToEntity(dto);
-		return getService().insert(entity, getLoginContext());
+		Long id = getService().insert(entity, getLoginContext());
+		return new ResponseIdDTO(id);
 	}
 
 	@Override

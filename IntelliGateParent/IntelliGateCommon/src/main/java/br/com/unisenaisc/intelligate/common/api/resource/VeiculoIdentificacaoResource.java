@@ -5,14 +5,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.unisenaisc.intelligate.common.api.dto.PessoaVeiculoDTO;
+import br.com.unisenaisc.intelligate.common.api.dto.VeiculoIdentificacaoDTO;
 import br.com.unisenaisc.intelligate.common.architecture.restful.IDetailCRUDResource;
 
-@Path(PessoaVeiculoResource.PATH)
+@Path(VeiculoIdentificacaoResource.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public interface PessoaVeiculoResource extends IDetailCRUDResource<PessoaVeiculoDTO> {
+public interface VeiculoIdentificacaoResource extends IDetailCRUDResource<VeiculoIdentificacaoDTO> {
 
-	public static final String PATH = PessoaResource.PATH + "/{parentId}/veiculo";
+	public static final String PATH = VeiculoResource.PATH + "/identificacao";
 	
 }

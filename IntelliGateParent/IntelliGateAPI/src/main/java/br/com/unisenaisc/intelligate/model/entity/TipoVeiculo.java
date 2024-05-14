@@ -14,7 +14,7 @@ public class TipoVeiculo extends AbstractEntity implements IDescricaoCustomizada
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Long idTipoPessoa;
+	private Long idTipoVeiculo;
 	
 	@NotNull
 	private Long codigo;
@@ -24,18 +24,18 @@ public class TipoVeiculo extends AbstractEntity implements IDescricaoCustomizada
 
 	public TipoVeiculo() {}
 	
-	public TipoVeiculo(Long idTipoPessoa, @NotNull Long codigo, @NotBlank String descricao) {
-		this.idTipoPessoa = idTipoPessoa;
+	public TipoVeiculo(Long idTipoVeiculo, @NotNull Long codigo, @NotBlank String descricao) {
+		this.idTipoVeiculo = idTipoVeiculo;
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
 
-	public Long getIdTipoPessoa() {
-		return idTipoPessoa;
+	public Long getIdTipoVeiculo() {
+		return idTipoVeiculo;
 	}
 
-	public void setIdTipoPessoa(Long idTipoPessoa) {
-		this.idTipoPessoa = idTipoPessoa;
+	public void setIdTipoVeiculo(Long idTipoVeiculo) {
+		this.idTipoVeiculo = idTipoVeiculo;
 	}
 
 	public Long getCodigo() {
@@ -56,7 +56,7 @@ public class TipoVeiculo extends AbstractEntity implements IDescricaoCustomizada
 
 	@Override
 	public Long getId() {
-		return getIdTipoPessoa();
+		return getIdTipoVeiculo();
 	}
 	
 	@Override
