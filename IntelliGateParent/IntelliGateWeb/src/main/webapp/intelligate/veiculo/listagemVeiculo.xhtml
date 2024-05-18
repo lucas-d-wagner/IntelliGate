@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../../_template.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+
+	<ui:define name="conteudo">
+		<div>
+			<p:fieldset>
+
+				<h:form id="tabelaVeiculos">
+					<p:growl id="growl" />
+
+
+					<p:outputLabel style="font-size:40px"
+						value="Veiculos" />
+
+					<br />
+					<br />
+					<p:commandButton value="Novo"
+						action="formVeiculo?faces-redirect=true" style="margin:10px;"/>
+
+
+					<p:dataTable value="#{listagemVeiculoManager.veiculos}"
+						var="veiculo" size="small" paginator="true" rows="10" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<f:facet name="header">Lista de veiculos</f:facet>
+						<div>
+							<p:column headerText="ID">
+								<p:outputLabel value="#{veiculo.id}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Tipo de Veiculo" sortBy="#{veiculo.tipoVeiculo.descricao}">
+								<p:outputLabel value="#{veiculo.tipoVeiculo.descricao}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Placa">
+								<p:outputLabel value="#{veiculo.placa}" />
+							</p:column>
+						</div>						
+						<div>
+							<p:column headerText="Modelo" sortBy="#{veiculo.modelo}">
+								<p:outputLabel value="#{veiculo.modelo}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Marca" sortBy="#{veiculo.marca}">
+								<p:outputLabel value="#{veiculo.marca}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Ano" sortBy="#{veiculo.ano}">
+								<p:outputLabel value="#{veiculo.ano}"/>
+							</p:column>
+						</div>
+
+						<div>
+							<p:column headerText="Opções">
+								<p:commandButton icon="pi pi-pencil" action="#{listagemVeiculoManager.editar(veiculo)}"/>
+								&nbsp;
+								<p:commandButton icon="pi pi-trash" process="@this"
+									oncomplete="PF('dialogoExclusao').show()">
+										<f:setPropertyActionListener value="#{veiculo.id}" target="#{listagemVeiculoManager.idExclusao}"/>
+								</p:commandButton>
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+			</p:fieldset>
+		</div>
+
+		<div>
+			<h:form>
+				<p:confirmDialog widgetVar="dialogoExclusao" showEffect="fade"
+					width="300" message="Excluir Veiculo?" header="Confirmar"
+					severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						update=":tabelaVeiculos"
+						oncomplete="PF('dialogoExclusao').hide()" 
+						actionListener="#{listagemVeiculoManager.excluir()}"/>
+					<p:commandButton value="No" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoExclusao').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -38,7 +38,7 @@ public class VeiculoConverter extends AbstractDTOConverter<Veiculo, VeiculoDTO> 
 		entity.setMarca(dto.getMarca());
 		entity.setAno(dto.getAno());
 		
-		return null;
+		return entity;
 	}
 	
 	private TipoVeiculoConverter getTipoVeiculoConverter() {

@@ -16,7 +16,10 @@ public class VeiculoService extends CRUDServiceImpl<Veiculo> {
 	
 	@Override
 	public void safeEdit(Veiculo entity, Veiculo entityManaged) {
-		return;
+		entityManaged.setPlaca(entity.getPlaca());
+		entityManaged.setModelo(entity.getModelo());
+		entityManaged.setMarca(entity.getMarca());
+		entityManaged.setAno(entity.getAno());
 	}
 
 	@Override

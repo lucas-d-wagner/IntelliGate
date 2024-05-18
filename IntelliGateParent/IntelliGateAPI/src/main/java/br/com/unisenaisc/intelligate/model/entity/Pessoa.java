@@ -34,6 +34,9 @@ public class Pessoa extends AbstractEntity {
 	@NotBlank
 	private String cpfCnpj;
 	
+	@NotBlank
+	private String nome;
+	
 	@Email
 	@NotBlank
 	private String email;
@@ -66,6 +69,14 @@ public class Pessoa extends AbstractEntity {
 
 	public void setCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {

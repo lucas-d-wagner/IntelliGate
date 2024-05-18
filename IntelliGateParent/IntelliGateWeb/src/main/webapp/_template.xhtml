@@ -17,7 +17,11 @@
 			<p:menubar>
 				<p:submenu label="Menu" icon="pi pi-fw pi-bars">
 					<p:menuitem value="Ínicio" icon="pi pi-fw pi-home"
-						action="index?faces-redirect=true" />
+						action="/index?faces-redirect=true" />
+					<p:menuitem value="Cadastro de Pessoa" icon="pi pi-fw pi-sign-out"
+						action="/intelligate/pessoa/listagemPessoa?faces-redirect=true" />
+					<p:menuitem value="Cadastro de Veículos" icon="pi pi-fw pi-sign-out"
+						action="/intelligate/veiculo/listagemVeiculo?faces-redirect=true" />
 					<p:menuitem value="Sair" icon="pi pi-fw pi-sign-out"
 						action="#{loginManager.logout}" process="@this" />
 				</p:submenu>
@@ -32,6 +36,9 @@
 		<ui:insert name="conteudo" />
 
 	</div>
+
+
+	<!-- TODO adicionar um footer -->
 
 
 </h:body>

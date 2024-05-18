@@ -16,6 +16,7 @@ public class PessoaService extends CRUDServiceImpl<Pessoa> {
 	
 	@Override
 	public void safeEdit(Pessoa entity, Pessoa entityManaged) {
+		entityManaged.setNome(entity.getNome());
 		entityManaged.setEmail(entity.getEmail());
 		entityManaged.setTelefone(entity.getTelefone());
 	}

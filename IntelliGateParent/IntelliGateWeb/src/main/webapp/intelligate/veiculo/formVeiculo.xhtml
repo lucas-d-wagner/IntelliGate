@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../../_template.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+
+	<ui:define name="conteudo">
+
+		<div>
+			<p:fieldset>
+
+				<p:outputLabel style="font-size:40px"
+					value="Cadastro de Veiculos" />
+				<p:growl id="message" />
+
+				<h:form>
+					<p:panelGrid styleClass="ui-noborder">
+
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="id" value="Id: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="id" style="width: 50rem;"
+									value="#{formVeiculoManager.veiculo.id}" readonly="true"
+									disabled="true" placeholder="#" />
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="tipoVeiculo" value="Tipo Veiculo: " />
+							</p:column>
+							<p:column colspan="3">
+								<p:selectOneMenu id="tipoVeiculo" required="true"
+									value="#{formVeiculoManager.veiculo.tipoVeiculo}" style="width: 21rem;"
+									disabled="#{formVeiculoManager.editing}">
+									<f:selectItem itemLabel="Selecione" disabled="true" />
+									<f:selectItems value="#{formVeiculoManager.tiposVeiculo}"
+										var="tipoVeiculo" itemLabel="#{tipoVeiculo.descricao}"
+										itemValue="#{tipoVeiculo}" />
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="placa" value="Placa: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="placa" style="width: 50rem;"
+									value="#{formVeiculoManager.veiculo.placa}" required="true" />
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="modelo" value="Modelo: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="modelo" style="width: 50rem;"
+									value="#{formVeiculoManager.veiculo.modelo}" required="true" />
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="marca" value="Marca: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="marca" style="width: 50rem;"
+									value="#{formVeiculoManager.veiculo.marca}" required="true" />
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="ano" value="Ano: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="ano" style="width: 50rem;"
+									value="#{formVeiculoManager.veiculo.ano}" required="true" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="2">
+								<p:commandButton value="Salvar"
+									actionListener="#{formVeiculoManager.salvar()}"
+									process="@form" update="@form :message" />
+							&nbsp;
+							<p:commandButton value="Voltar"
+									action="listagemVeiculo?faces-redirect=true" process="@this" />
+							</p:column>
+						</p:row>
+
+					</p:panelGrid>
+				</h:form>
+
+			</p:fieldset>
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

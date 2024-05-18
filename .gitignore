@@ -74,10 +74,6 @@ target/
 
 **/hibernate.cfg.xml
 
-# Ignora arquivos específicos do JPA
-
-**/persistence.xml
-
 # Ignora arquivos de configuração do Tomcat
 
 **/tomcat-users.xml

@@ -12,6 +12,8 @@ public class PessoaDTO extends AbstractDTO {
 	
 	private String cpfCnpj;
 	
+	private String nome;
+	
 	private String email;
 
 	private String telefone;
@@ -38,6 +40,14 @@ public class PessoaDTO extends AbstractDTO {
 
 	public void setCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {

@@ -15,6 +15,7 @@ public class PessoaConverter extends AbstractDTOConverter<Pessoa, PessoaDTO>{
 		
 		dto.setIdPessoa(entity.getIdPessoa());
 		dto.setTipoPessoa(getTipoPessoaConverter().convertToDTO(entity.getTipoPessoa()));
+		dto.setNome(entity.getNome());
 		dto.setCpfCnpj(entity.getCpfCnpj());
 		dto.setEmail(entity.getEmail());
 		dto.setTelefone(entity.getTelefone());
@@ -32,6 +33,7 @@ public class PessoaConverter extends AbstractDTOConverter<Pessoa, PessoaDTO>{
 		
 		entity.setIdPessoa(dto.getIdPessoa());
 		entity.setTipoPessoa(getTipoPessoaConverter().convertToEntity(dto.getTipoPessoa()));
+		entity.setNome(dto.getNome());
 		entity.setCpfCnpj(dto.getCpfCnpj());
 		entity.setEmail(dto.getEmail());
 		entity.setTelefone(dto.getTelefone());

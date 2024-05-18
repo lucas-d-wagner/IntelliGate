@@ -1,4 +1,4 @@
-package br.com.unisenaisc.intelligate.web;
+package br.com.unisenaisc.intelligate.web.manager.login;
 
 import java.io.IOException;
 
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import br.com.unisenaisc.intelligate.common.api.dto.LoginDTO;
 import br.com.unisenaisc.intelligate.common.api.dto.TokenDTO;
 import br.com.unisenaisc.intelligate.common.api.resource.LoginResource;
+import br.com.unisenaisc.intelligate.web.manager.AbstractFormManager;
 
 @Named
 @RequestScoped

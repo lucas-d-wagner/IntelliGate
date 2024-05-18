@@ -1,5 +1,6 @@
-package br.com.unisenaisc.intelligate.web;
+package br.com.unisenaisc.intelligate.web.manager;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
@@ -17,13 +18,21 @@ public abstract class AbstractFormManager implements Serializable {
 
 	public void addFacesMessage(Exception exception) {
 		String message = ExceptionUtil.getMessage(exception);
-		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN, message, null);
+		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null);
 		getCurrentInstance().addMessage(null, facesMessage);
 	}
 	
 	public void addFacesMessage(String message) {
 		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, message, null);
 		getCurrentInstance().addMessage(null, facesMessage);
+	}
+	
+	public void redirectTo(String path) {
+		try {
+			getExternalContext().redirect(path);
+		} catch (IOException e) {
+			addFacesMessage(e);
+		}
 	}
 	
 	public FacesContext getCurrentInstance() {
