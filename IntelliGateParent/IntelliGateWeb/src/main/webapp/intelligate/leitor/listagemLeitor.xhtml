@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../../_template.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+
+	<ui:define name="conteudo">
+		<div>
+			<p:fieldset>
+
+				<h:form id="tabelaLeitores">
+					<p:growl id="growl" />
+
+
+					<p:outputLabel style="font-size:40px"
+						value="Leitores" />
+
+					<br />
+					<br />
+					<p:commandButton value="Novo"
+						action="formLeitor?faces-redirect=true" style="margin:10px;"/>
+
+
+					<p:dataTable value="#{listagemLeitorManager.leitores}"
+						var="leitor" size="small" paginator="true" rows="10" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<f:facet name="header">Lista de leitores</f:facet>
+						<div>
+							<p:column headerText="ID">
+								<p:outputLabel value="#{leitor.id}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Endereço" sortBy="#{leitor.endereco}">
+								<p:outputLabel value="#{leitor.endereco}" />
+							</p:column>
+						</div>						
+						<div>
+							<p:column headerText="Descrição" sortBy="#{leitor.descricao}">
+								<p:outputLabel value="#{leitor.descricao}"/>
+							</p:column>
+						</div>
+
+						<div>
+							<p:column headerText="Opções">
+								<p:commandButton icon="pi pi-pencil" action="#{listagemLeitorManager.editar(leitor)}"/>
+								&nbsp;
+								<p:commandButton icon="pi pi-trash" process="@this"
+									oncomplete="PF('dialogoExclusao').show()">
+										<f:setPropertyActionListener value="#{leitor.id}" target="#{listagemLeitorManager.idExclusao}"/>
+								</p:commandButton>
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+			</p:fieldset>
+		</div>
+
+		<div>
+			<h:form>
+				<p:confirmDialog widgetVar="dialogoExclusao" showEffect="fade"
+					width="300" message="Excluir Leitor?" header="Confirmar"
+					severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						update=":tabelaLeitores"
+						oncomplete="PF('dialogoExclusao').hide()" 
+						actionListener="#{listagemLeitorManager.excluir()}"/>
+					<p:commandButton value="No" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoExclusao').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

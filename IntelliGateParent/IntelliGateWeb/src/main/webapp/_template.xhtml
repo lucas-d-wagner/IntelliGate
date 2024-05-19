@@ -18,10 +18,14 @@
 				<p:submenu label="Menu" icon="pi pi-fw pi-bars">
 					<p:menuitem value="Ínicio" icon="pi pi-fw pi-home"
 						action="/index?faces-redirect=true" />
-					<p:menuitem value="Cadastro de Pessoa" icon="pi pi-fw pi-sign-out"
+					<p:menuitem value="Usuários" icon="pi pi-fw pi-users"
+						action="/intelligate/usuario/listagemUsuario?faces-redirect=true" />
+					<p:menuitem value="Pessoas" icon="pi pi-fw pi-id-card"
 						action="/intelligate/pessoa/listagemPessoa?faces-redirect=true" />
-					<p:menuitem value="Cadastro de Veículos" icon="pi pi-fw pi-sign-out"
+					<p:menuitem value="Veículos" icon="pi pi-fw pi-car"
 						action="/intelligate/veiculo/listagemVeiculo?faces-redirect=true" />
+					<p:menuitem value="Leitores" icon="pi pi-fw pi-sitemap"
+						action="/intelligate/leitor/listagemLeitor?faces-redirect=true" />
 					<p:menuitem value="Sair" icon="pi pi-fw pi-sign-out"
 						action="#{loginManager.logout}" process="@this" />
 				</p:submenu>
@@ -29,7 +33,6 @@
 			<br />
 		</h:form>
 	</div>
-
 
 	<div id="conteudo">
 

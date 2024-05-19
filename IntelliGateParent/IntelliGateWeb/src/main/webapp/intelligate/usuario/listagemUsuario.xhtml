@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../../_template.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+
+	<ui:define name="conteudo">
+		<div>
+			<p:fieldset>
+
+				<h:form id="tabelaUsuarios">
+					<p:growl id="growl" />
+
+
+					<p:outputLabel style="font-size:40px"
+						value="Usuários" />
+
+					<br />
+					<br />
+					<p:commandButton value="Novo"
+						action="formUsuario?faces-redirect=true" style="margin:10px;"/>
+
+
+					<p:dataTable value="#{listagemUsuarioManager.usuarios}"
+						var="usuario" size="small" paginator="true" rows="10" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<f:facet name="header">Lista de usuários</f:facet>
+						<div>
+							<p:column headerText="ID">
+								<p:outputLabel value="#{usuario.id}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Nome">
+								<p:outputLabel value="#{usuario.nome}" />
+							</p:column>
+						</div>						
+						<div>
+							<p:column headerText="Login" sortBy="#{usuario.login}">
+								<p:outputLabel value="#{usuario.login}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Administrador" sortBy="#{usuario.administrador}">
+								<p:outputLabel value="#{usuario.administrador}"/>
+							</p:column>
+						</div>
+
+						<div>
+							<p:column headerText="Opções">
+								<p:commandButton icon="pi pi-pencil" action="#{listagemUsuarioManager.editar(usuario)}"/>
+								&nbsp;
+								<p:commandButton icon="pi pi-trash" process="@this"
+									oncomplete="PF('dialogoExclusao').show()">
+										<f:setPropertyActionListener value="#{usuario.id}" target="#{listagemUsuarioManager.idExclusao}"/>
+								</p:commandButton>
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+			</p:fieldset>
+		</div>
+
+		<div>
+			<h:form>
+				<p:confirmDialog widgetVar="dialogoExclusao" showEffect="fade"
+					width="300" message="Excluir Usuário" header="Confirmar"
+					severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						update=":tabelaUsuarios"
+						oncomplete="PF('dialogoExclusao').hide()" 
+						actionListener="#{listagemUsuarioManager.excluir()}"/>
+					<p:commandButton value="No" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoExclusao').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
