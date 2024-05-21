@@ -9,12 +9,127 @@
 
 
 	<h:body>
-	    <h:panelGroup id="listagemVeiculos">
-	        <h2>Veículos</h2>
-	        <h:outputText value="Aqui vai uma lsitagem de veículso" />
-	    </h:panelGroup>
-	</h:body>
+	
+		<div>
+			<p:fieldset>
+				<h:form id="tabelaPessoaVeiculos">
 
+					<p:commandButton value="Novo" onclick="PF('dialogoVincularVeiculo').show();" style="margin:10px;"/>
+
+					<p:dataTable value="#{formPessoaManager.pessoaVeiculos}"
+						var="pessoaVeiculo" size="small" paginator="true" rows="10" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<f:facet name="header">Lista de Veículos</f:facet>
+						<div>
+							<p:column headerText="ID">
+								<p:outputLabel value="#{pessoaVeiculo.id}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Tipo de Veiculo" sortBy="#{pessoaVeiculo.veiculo.tipoVeiculo.descricao}">
+								<p:outputLabel value="#{pessoaVeiculo.veiculo.tipoVeiculo.descricao}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Placa">
+								<p:outputLabel value="#{pessoaVeiculo.veiculo.placa}" />
+							</p:column>
+						</div>						
+						<div>
+							<p:column headerText="Modelo" sortBy="#{pessoaVeiculo.veiculo.modelo}">
+								<p:outputLabel value="#{pessoaVeiculo.veiculo.modelo}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Marca" sortBy="#{pessoaVeiculo.veiculo.marca}">
+								<p:outputLabel value="#{pessoaVeiculo.veiculo.marca}"/>
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Ano" sortBy="#{veiculo.ano}">
+								<p:outputLabel value="#{pessoaVeiculo.veiculo.ano}"/>
+							</p:column>
+						</div>
+
+						<div>
+							<p:column headerText="Opções">
+								<p:commandButton icon="pi pi-trash" process="@this"
+									oncomplete="PF('dialogoExclusao').show()">
+										<f:setPropertyActionListener value="#{pessoaVeiculo.id}" target="#{formPessoaManager.idExclusaoPessoaVeiculo}"/>
+								</p:commandButton>
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+			</p:fieldset>
+		</div>
+		
+		<div>
+			<h:form>
+				<p:confirmDialog widgetVar="dialogoExclusao" showEffect="fade"
+					width="300" message="Desvincular Veiculo?" header="Confirmar"
+					severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						oncomplete="PF('dialogoExclusao').hide()" 
+						actionListener="#{formPessoaManager.excluirPessoaVeiculo()}"/>
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoExclusao').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+		
+		<div>
+			<h:form>
+				<p:dialog header="Vincular Veículo" widgetVar="dialogoVincularVeiculo" modal="true" multiple="true">
+					<p:panelGrid styleClass="ui-noborder">
+
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="placa" value="Placa: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="placa" style="width: 50rem;"
+									value="#{formPessoaManager.placa}" required="true"/>
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="2">
+								<p:commandButton value="Vincular"
+									actionListener="#{formPessoaManager.vincularVeiculo()}"
+									process="@form" update="@form :message" />
+								<p:commandButton value="Cancelar" 
+									onclick="PF('dialogoVincularVeiculo').hide();" 
+									process="@this" />
+							</p:column>
+						</p:row>
+						
+					</p:panelGrid>
+				</p:dialog>   
+			</h:form>
+		</div>
+		
+		<div>
+			<h:form>
+				<p:confirmDialog widgetVar="dialogoIncluirNovoVeiculo" showEffect="fade"
+					width="300" message="Veículo não cadastrado, deseja cadastrá-lo?" header="Confirmar"
+					severity="warn" multiple="true">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						oncomplete="PF('dialogoIncluirNovoVeiculo').hide()" 
+						actionListener="#{formPessoaManager.vincularVeiculo()}"/>
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoIncluirNovoVeiculo').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+		
+		
+		
+	</h:body>
 
 
 </html>
