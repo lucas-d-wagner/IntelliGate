@@ -20,6 +20,7 @@
 		<dependency>
 			<groupId>br.com.unisenaisc.intelligate</groupId>
 			<artifactId>IntelliGateCommon</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

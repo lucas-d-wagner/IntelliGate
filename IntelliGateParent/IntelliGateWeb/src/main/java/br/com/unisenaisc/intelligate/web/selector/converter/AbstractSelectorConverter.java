@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import br.com.unisenaisc.intelligate.common.architecture.restful.AbstractDTO;
-import br.com.unisenaisc.intelligate.common.architecture.restful.ISelectorResource;
 import br.com.unisenaisc.intelligate.web.client.ClientRestProxyService;
 
 public abstract class AbstractSelectorConverter<DTO extends AbstractDTO> implements Converter<DTO> {
@@ -18,7 +17,7 @@ public abstract class AbstractSelectorConverter<DTO extends AbstractDTO> impleme
 		
 		Long id = Long.valueOf(value);
 		
-		return getSelectorResource().find(id);
+		return findDTO(id);
 	}
 	
 
@@ -31,8 +30,8 @@ public abstract class AbstractSelectorConverter<DTO extends AbstractDTO> impleme
 		return String.valueOf(value.getId());
 	}
 
-	public abstract ISelectorResource<DTO> getSelectorResource();
-
+	public abstract DTO findDTO(Long id);
+	
 	public <T> T getResource(Class<T> resourceInterface) {
 		return new ClientRestProxyService().createProxy(resourceInterface);
 	}

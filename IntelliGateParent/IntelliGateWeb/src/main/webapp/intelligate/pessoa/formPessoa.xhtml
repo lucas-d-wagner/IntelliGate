@@ -105,14 +105,16 @@
 						</p:row>
 
 					</p:panelGrid>
-					
-			        <p:tabView>
-			            <p:tab title="Veículos">
-			                <ui:include src="includePessoaVeiculo.xhtml" />
-			            </p:tab>
-			        </p:tabView>
-					
+										
 				</h:form>
+				
+		        <p:tabView>
+		            <p:tab title="Veículos">
+		                <ui:include src="includePessoaVeiculo.xhtml">
+		                	<ui:param name="pessoaVeiculoManager" value="#{formPessoaManager.pessoaVeiculoManager}"/>
+		                </ui:include>
+		            </p:tab>
+		        </p:tabView>
 
 			</p:fieldset>
 		</div>
