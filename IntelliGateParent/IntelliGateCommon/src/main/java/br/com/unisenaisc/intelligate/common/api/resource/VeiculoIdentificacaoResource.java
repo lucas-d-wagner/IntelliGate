@@ -13,6 +13,6 @@ import br.com.unisenaisc.intelligate.common.architecture.restful.IDetailCRUDReso
 @Consumes(MediaType.APPLICATION_JSON)
 public interface VeiculoIdentificacaoResource extends IDetailCRUDResource<VeiculoIdentificacaoDTO> {
 
-	public static final String PATH = VeiculoResource.PATH + "/identificacao";
+	public static final String PATH = VeiculoResource.PATH + "/{parentId}/identificacao";
 	
 }

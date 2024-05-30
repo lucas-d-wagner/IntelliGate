@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="veiculoIdentificaoManager" value="#{veiculoIdentificaoManager}"/>
+	
+		<div>
+			<p:fieldset>
+				<h:form id="tabelaIdentificacaoVeiculo">
+
+					<p:commandButton value="Novo" onclick="PF('dialogoAdicionarIdentificacao').show();" style="margin:10px;"/>
+
+					<p:dataTable value="#{veiculoIdentificaoManager.veiculoIdentificacoes}"
+						var="veiculoIdentificacao" size="small" paginator="true" rows="10" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<f:facet name="header">Lista de Veículos</f:facet>
+						<div>
+							<p:column headerText="ID">
+								<p:outputLabel value="#{veiculoIdentificacao.id}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="UUID" sortBy="#{veiculoIdentificacao.UUID}">
+								<p:outputLabel value="#{veiculoIdentificacao.UUID}"/>
+							</p:column>
+						</div>
+
+						<div>
+							<p:column headerText="Opções">
+								<p:commandButton icon="pi pi-trash" process="@this"
+									oncomplete="PF('dialogoExclusao').show()">
+										<f:setPropertyActionListener value="#{veiculoIdentificacao.id}" target="#{veiculoIdentificaoManager.idExclusao}"/>
+								</p:commandButton>
+							</p:column>
+						</div>
+					</p:dataTable>
+				</h:form>
+			</p:fieldset>
+		</div>
+		
+		<div>
+			<h:form id="formExclusao">
+				<p:confirmDialog widgetVar="dialogoExclusao" showEffect="fade"
+					width="300" message="Remover Identificação?" header="Confirmar"
+					severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check" process="@this"
+						oncomplete="PF('dialogoExclusao').hide()" 
+						actionListener="#{veiculoIdentificaoManager.excluir()}"
+						update=":message"/>
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('dialogoExclusao').hide()" />
+				</p:confirmDialog>
+
+			</h:form>
+		</div>
+		
+		<div>
+			<h:form id="formVincularVeiculo">
+				<p:dialog header="Vincular Veículo" widgetVar="dialogoAdicionarIdentificacao" modal="true" multiple="true">
+					<p:panelGrid styleClass="ui-noborder">
+
+						<p:row>
+							<p:column colspan="3">
+								<p:outputLabel for="UUID" value="UUID: " />
+							</p:column>
+							<p:column colspan="7">
+								<p:inputText id="UUID" style="width: 50rem;"
+									value="#{veiculoIdentificaoManager.veiculoIdentificacao.UUID}" required="true" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="2">
+								<p:commandButton value="Adicionar"
+									actionListener="#{veiculoIdentificaoManager.adicionarIdentificacao()}"
+									oncomplete="PF('dialogoIncluirNovoVeiculo').hide()" 
+									process="@this @form" update="@this @form :message" />
+								&nbsp;
+								<p:commandButton value="Cancelar" 
+									onclick="PF('dialogoAdicionarIdentificacao').hide();" 
+									process="@this" />
+							</p:column>
+						</p:row>
+						
+					</p:panelGrid>
+				</p:dialog>   
+			</h:form>
+			
+			
+		</div>
+		
+</ui:composition>
+		

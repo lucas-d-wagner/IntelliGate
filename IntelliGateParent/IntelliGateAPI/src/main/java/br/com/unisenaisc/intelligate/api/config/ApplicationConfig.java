@@ -10,6 +10,7 @@ import org.reflections.Reflections;
 
 import br.com.unisenaisc.intelligate.api.provider.AuthenticationFilterProvider;
 import br.com.unisenaisc.intelligate.api.provider.ExceptionMapperProvider;
+import br.com.unisenaisc.intelligate.api.provider.ValidateClientAddressFilterProvider;
 import br.com.unisenaisc.intelligate.architecture.restful.AbstractResource;
 import br.com.unisenaisc.intelligate.common.api.provider.ObjectMapperProvider;
 
@@ -35,6 +36,7 @@ public class ApplicationConfig extends Application {
 		resourcesClass.add(ObjectMapperProvider.class);
 		resourcesClass.add(ExceptionMapperProvider.class);
 		resourcesClass.add(AuthenticationFilterProvider.class);
+		resourcesClass.add(ValidateClientAddressFilterProvider.class);
 	}
 
 }

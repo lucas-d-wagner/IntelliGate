@@ -18,6 +18,8 @@ import br.com.unisenaisc.intelligate.web.manager.AbstractFormManager;
 public class FormVeiculoManager extends AbstractFormManager {
 
 	private static final long serialVersionUID = 1L;
+	
+	private VeiculoIdentificaoManager veiculoIdentificaoManager;
 
 	private VeiculoDTO veiculo;
 	
@@ -25,8 +27,12 @@ public class FormVeiculoManager extends AbstractFormManager {
 
 	private boolean editing = false;
 	
+	public FormVeiculoManager() {
+		this.veiculoIdentificaoManager = new VeiculoIdentificaoManager(this);
+	}
+	
 	@PostConstruct
-	public void initi() {
+	public void init() {
 		Long idVeiculo = (Long) getExternalContext().getFlash().get("idVeiculo");
 		
 		if(idVeiculo == null) {
@@ -38,6 +44,8 @@ public class FormVeiculoManager extends AbstractFormManager {
 		}
 		
 		this.tiposVeiculo = new ArrayList<>(getTipoVeiculoResource().findAll());
+		
+		this.veiculoIdentificaoManager.inicializarAba();
 	}
 	
 	public void salvar() {
@@ -89,6 +97,14 @@ public class FormVeiculoManager extends AbstractFormManager {
 
 	public void setEditing(boolean editing) {
 		this.editing = editing;
+	}
+
+	public VeiculoIdentificaoManager getVeiculoIdentificaoManager() {
+		return veiculoIdentificaoManager;
+	}
+
+	public void setVeiculoIdentificaoManager(VeiculoIdentificaoManager veiculoIdentificaoManager) {
+		this.veiculoIdentificaoManager = veiculoIdentificaoManager;
 	}
 	
 }

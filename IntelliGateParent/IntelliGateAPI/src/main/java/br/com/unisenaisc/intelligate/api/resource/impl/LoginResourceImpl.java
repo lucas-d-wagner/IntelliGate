@@ -1,6 +1,7 @@
 package br.com.unisenaisc.intelligate.api.resource.impl;
 
 import javax.annotation.ManagedBean;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import br.com.unisenaisc.intelligate.api.jwt.JWT;
@@ -16,14 +17,15 @@ import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 @Transactional
 public class LoginResourceImpl extends AbstractResource implements LoginResource {
 
+	@Inject
+	private LoginService service;
+	
 	@Override
 	public TokenDTO login(LoginDTO dto) throws BusinessCheckedException {
 		String login = dto.getLogin();
 		String password = dto.getPassword();
 		
-		LoginService loginService = new LoginService();
-		
-		LoginContext loginContext = loginService.login(login, password);
+		LoginContext loginContext = service.login(login, password);
 		
 		return JWT.buildTokenDTO(loginContext);
 	}

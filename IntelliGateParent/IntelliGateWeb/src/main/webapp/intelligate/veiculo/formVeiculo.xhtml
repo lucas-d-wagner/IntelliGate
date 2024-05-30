@@ -104,6 +104,14 @@
 
 					</p:panelGrid>
 				</h:form>
+				
+		        <p:tabView>
+		            <p:tab title="Identificação">
+		                <ui:include src="includeVeiculoIdentificacao.xhtml">
+		                	<ui:param name="veiculoIdentificaoManager" value="#{formVeiculoManager.veiculoIdentificaoManager}"/>
+		                </ui:include>
+		            </p:tab>
+		        </p:tabView>
 
 			</p:fieldset>
 

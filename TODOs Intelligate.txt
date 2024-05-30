@@ -1,0 +1,25 @@
+TODOs IntelliGate
+
+Ínicio
+ - Implementar algumas dashboards
+
+Login --> OK
+
+Usuário
+ - Apenas administrador pode executar as ações (validação no backend)
+
+Pessoas
+ - Alterar máscara cpfCnpj quando for pssoa jurídica
+ - input de email
+ - input de telefone (máscara)
+ - Ajustar os updates e disabled da aba
+
+Veículos
+ - Máscaras etc nos inputs
+ - Ajustar os updates e disabled da aba
+ 	
+Leitores
+ - Máscara para endereço IP
+
+BACKEND
+ - gerar histórico de entrada
