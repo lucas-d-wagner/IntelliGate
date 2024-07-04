@@ -49,7 +49,9 @@ public class VeiculoIdentificaoManager extends AbstractFormManager {
 			
 			addFacesMessage("Identificação removida com sucesso.");
 			
-			consultarIdentificacoesVeiculo();
+			getExternalContext().getFlash().setKeepMessages(true);
+
+			redirectTo("listagemVeiculo.xhtml");
 
 		} catch (Exception e) {
 			addFacesMessage(e);
@@ -62,7 +64,9 @@ public class VeiculoIdentificaoManager extends AbstractFormManager {
 			
 			addFacesMessage("Identificação adicionada com sucesso.");
 			
-			consultarIdentificacoesVeiculo();
+			getExternalContext().getFlash().setKeepMessages(true);
+
+			redirectTo("listagemVeiculo.xhtml");
 
 		} catch (Exception e) {
 			addFacesMessage(e);

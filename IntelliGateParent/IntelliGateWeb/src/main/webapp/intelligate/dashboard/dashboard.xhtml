@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../../_template.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+	<ui:define name="conteudo">
+
+    <h:panelGroup layout="block" styleClass="ui-g">
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Total de Acessos Hoje
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.totalCarros}</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.totalMotos}</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Acessados Agora
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.nroCarrosAcessados}</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.nroMotosAcessados}</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Taxa de Ocupação
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.taxaOcupacaoCarros}%</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.taxaOcupacaoMotos}%</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
+    </h:panelGroup>
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Dashboard de Estacionamento</title>
+    <h:outputStylesheet name="styles.css"/>
+</h:head>
+
+<h:body>
+    <h:form id="dashboardForm">
+        <h:panelGrid columns="1" styleClass="dashboard-grid">
+            <!-- Cabeçalho -->
+            <h:panelGroup styleClass="header">
+                <h2>Dashboard de Estacionamento</h2>
+                <h:outputText value="#{dashboardManager.currentDateTime}" />
+            </h:panelGroup>
+
+            <!-- Filtro de Período -->
+            <h:panelGroup styleClass="filter-panel">
+                <h:outputLabel value="Filtrar por período:" for="periodFilter" />
+                <p:selectOneMenu id="periodFilter" value="#{dashboardManager.selectedPeriod}">
+                    <f:selectItem itemLabel="Hoje" itemValue="hoje" />
+                    <f:selectItem itemLabel="Esta Semana" itemValue="semana" />
+                    <f:selectItem itemLabel="Este Mês" itemValue="mes" />
+                    <f:selectItem itemLabel="Este Ano" itemValue="ano" />
+                    <f:selectItem itemLabel="Personalizado" itemValue="personalizado" />
+                    <p:ajax update="customDatePanel" listener="#{dashboardManager.onPeriodChange}" />
+                </p:selectOneMenu>
+
+                <h:panelGroup id="customDatePanel" rendered="#{dashboardManager.selectedPeriod eq 'personalizado'}">
+                    <h:outputLabel value="Data Inicial:" for="startDate" />
+                    <p:calendar id="startDate" value="#{dashboardManager.startDate}" pattern="dd/MM/yyyy" />
+
+                    <h:outputLabel value="Data Final:" for="endDate" />
+                    <p:calendar id="endDate" value="#{dashboardManager.endDate}" pattern="dd/MM/yyyy" />
+                </h:panelGroup>
+            </h:panelGroup>
+
+            <!-- Painel Principal -->
+            <h:panelGrid columns="2" styleClass="main-panel">
+                <p:panel header="Número de Veículos no Estacionamento">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Total:" />
+                        <h:outputText value="#{dashboardManager.totalVeiculos}" />
+
+                        <h:outputText value="Carros:" />
+                        <h:outputText value="#{dashboardManager.totalCarros}" />
+
+                        <h:outputText value="Motos:" />
+                        <h:outputText value="#{dashboardManager.totalMotos}" />
+                    </p:panelGrid>
+                </p:panel>
+
+                <p:panel header="Taxa de Ocupação">
+                    <p:progressBar value="#{dashboardManager.taxaOcupacao}" labelTemplate="{value}%" />
+                </p:panel>
+            </h:panelGrid>
+
+            <!-- Seção de Estatísticas -->
+            <h:panelGroup styleClass="statistics-section">
+                <p:panel header="Histórico de Acessos">
+                    <p:dataTable value="#{dashboardManager.historicoAcessos}" var="acesso">
+                        <p:column headerText="Veículo">
+                            <h:outputText value="#{acesso.veiculo}" />
+                        </p:column>
+                        <p:column headerText="Data de Entrada">
+                            <h:outputText value="#{acesso.dataEntrada}" />
+                        </p:column>
+                        <p:column headerText="Data de Saída">
+                            <h:outputText value="#{acesso.dataSaida}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+
+                <p:panel header="Tempo Médio de Permanência">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Carros:" />
+                        <h:outputText value="#{dashboardManager.tempoMedioCarros}" />
+
+                        <h:outputText value="Motos:" />
+                        <h:outputText value="#{dashboardManager.tempoMedioMotos}" />
+                    </p:panelGrid>
+                </p:panel>
+            </h:panelGroup>
+
+            <!-- Gráficos -->
+
+            <!-- Listagens e Alertas -->
+            <h:panelGroup styleClass="alerts-section">
+                <p:panel header="Veículos com Longa Permanência">
+                    <p:dataTable value="#{dashboardManager.veiculosLongaPermanencia}" var="veiculo">
+                        <p:column headerText="Veículo">
+                            <h:outputText value="#{veiculo.veiculo}" />
+                        </p:column>
+                        <p:column headerText="Data de Entrada">
+                            <h:outputText value="#{veiculo.dataEntrada}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+
+                <p:panel header="Alertas e Notificações">
+                    <p:messages autoUpdate="true" />
+                </p:panel>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

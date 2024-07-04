@@ -59,8 +59,10 @@ public class PessoaVeiculoManager extends AbstractFormManager {
 			
 			addFacesMessage("Veículo desvinculado com sucesso.");
 			
-			consultarVeiculosPessoa();
-
+			getExternalContext().getFlash().setKeepMessages(true);
+			
+			redirectTo("listagemPessoa.xhtml");
+			
 		} catch (Exception e) {
 			addFacesMessage(e);
 		}
@@ -72,8 +74,10 @@ public class PessoaVeiculoManager extends AbstractFormManager {
 			
 			addFacesMessage("Veículo vinculado com sucesso.");
 			
-			consultarVeiculosPessoa();
-
+			getExternalContext().getFlash().setKeepMessages(true);
+			
+			redirectTo("listagemPessoa.xhtml");
+			
 		} catch (Exception e) {
 			addFacesMessage(e);
 		}

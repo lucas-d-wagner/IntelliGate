@@ -10,6 +10,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 import br.com.unisenaisc.intelligate.common.api.dto.ExceptionDTO;
+import br.com.unisenaisc.intelligate.common.exception.BusinessCheckedException;
 import br.com.unisenaisc.intelligate.common.exception.BusinessException;
 
 @Provider
@@ -25,7 +26,7 @@ public class ExceptionMapperProvider implements ExceptionMapper<Throwable> {
 		
 		if (exception instanceof NotAuthorizedException) {
 			statusResponse = Status.UNAUTHORIZED;
-		} else if (exception instanceof BusinessException) {
+		} else if (exception instanceof BusinessException || exception instanceof BusinessCheckedException) {
 			statusResponse = Status.BAD_REQUEST;
 		}
 		

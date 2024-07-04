@@ -32,8 +32,11 @@ public class LogAcesso extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataHora;
+	private Date dataHoraEntrada;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataHoraSaida;
+	
 	public Long getIdLogAcesso() {
 		return idLogAcesso;
 	}
@@ -50,12 +53,20 @@ public class LogAcesso extends AbstractEntity {
 		this.veiculo = veiculo;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
+	public Date getDataHoraEntrada() {
+		return dataHoraEntrada;
 	}
 
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
+	public void setDataHoraEntrada(Date dataHoraEntrada) {
+		this.dataHoraEntrada = dataHoraEntrada;
+	}
+
+	public Date getDataHoraSaida() {
+		return dataHoraSaida;
+	}
+
+	public void setDataHoraSaida(Date dataHoraSaida) {
+		this.dataHoraSaida = dataHoraSaida;
 	}
 
 	@Override

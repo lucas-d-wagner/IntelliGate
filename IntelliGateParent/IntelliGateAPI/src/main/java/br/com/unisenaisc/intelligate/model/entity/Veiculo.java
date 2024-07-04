@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import br.com.unisenaisc.intelligate.architecture.entity.AbstractEntity;
+import br.com.unisenaisc.intelligate.model.enums.EnumTipoVeiculo;
 
 @Entity
 public class Veiculo extends AbstractEntity {
@@ -99,6 +100,14 @@ public class Veiculo extends AbstractEntity {
 
 	public void setIdentificacoes(Set<VeiculoIdentificacao> identificacoes) {
 		this.identificacoes = identificacoes;
+	}
+	
+	public boolean isCarro() {
+		return this.tipoVeiculo != null && this.tipoVeiculo.equals(EnumTipoVeiculo.CARRO.getEntity());
+	}
+	
+	public boolean isMoto() {
+		return this.tipoVeiculo != null && this.tipoVeiculo.equals(EnumTipoVeiculo.MOTO.getEntity());
 	}
 
 	@Override
