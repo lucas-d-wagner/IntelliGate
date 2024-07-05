@@ -73,6 +73,22 @@
         </h:panelGroup>
     </h:panelGroup>
 
+    <p:panelGrid columns="1" style="width: 100%;">
+        <!-- Gráfico de linha ocupando toda a primeira linha -->
+        <p:panel header="Gráfico de Linha" style="text-align: center;">
+            <p:lineChart model="#{dashboardManager.acessosMesReferenciaChart}" style="width: 100%; height: 400px;"/>
+        </p:panel>
+
+        <!-- Gráficos de pizza e coluna lado a lado na segunda linha -->
+        <p:panelGrid columns="2" style="width: 100%; text-align: center;">
+            <p:panel header="Gráfico de Pizza">
+                <p:pieChart model="#{dashboardManager.totalAcessosPeriodoChart}" style="width: 100%; height: 400px;"/>
+            </p:panel>
+            <p:panel header="Gráfico de Coluna">
+                <p:barChart model="#{dashboardManager.tempoMedioPermanenciaChart}" style="width: 100%; height: 400px;"/>
+            </p:panel>
+        </p:panelGrid>
+    </p:panelGrid>
 
 
 	</ui:define>
