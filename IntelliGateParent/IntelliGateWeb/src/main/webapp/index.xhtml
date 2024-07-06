@@ -14,13 +14,125 @@
 
 	<ui:define name="conteudo">
 
-			<p:fieldset style="text-align:center;">
+    <h:panelGroup layout="block" styleClass="ui-g">
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Total de Acessos Hoje
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.totalCarros}</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.totalMotos}</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
 
-				<p:outputLabel style="font-size:40px;"
-					value="Bem-Vindo!" />
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Acessados Agora
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.nroCarrosAcessados}</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.nroMotosAcessados}</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
 
-			</p:fieldset>
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-4">
+            <p:card>
+                <f:facet name="title">
+                    Taxa de Ocupação
+                </f:facet>
+                <h:panelGrid columns="3" styleClass="center-content">
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.taxaOcupacaoCarros}%</span>
+                        <h:outputText value="Carros" />
+                    </h:panelGroup>
+                    <div class="separator"></div>
+                    <h:panelGroup layout="block" styleClass="center-content">
+                        <span class="highlight-number">#{dashboardManager.dashboardData.taxaOcupacaoMotos}%</span>
+                        <h:outputText value="Motos" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </p:card>
+        </h:panelGroup>
+    </h:panelGroup>
 
+    <h:panelGroup layout="block" styleClass="ui-g">
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-12">
+            <p:card>
+                <f:facet name="title">
+                    Acessados Agora
+                </f:facet>
+   					<p:dataTable value="#{dashboardManager.dashboardData.veiculosAcessados}"
+						var="veiculo" size="small" paginator="true" rows="5" paginatorPosition="bottom"
+						allowUnsorting="true" sortMode="multiple">
+						<div>
+							<p:column headerText="Tipo" sortBy="#{veiculo.tipo}">
+								<p:outputLabel value="#{veiculo.tipo}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Placa" sortBy="#{veiculo.placa}">
+								<p:outputLabel value="#{veiculo.placa}" />
+							</p:column>
+						</div>
+						<div>
+							<p:column headerText="Modelo" sortBy="#{veiculo.modelo}">
+								<p:outputLabel value="#{veiculo.modelo}" />
+							</p:column>
+						</div>						
+						<div>
+							<p:column headerText="Entrada" sortBy="#{veiculo.dataEntrada}">
+								<p:outputLabel value="#{veiculo.dataEntrada}">
+							    	<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+								</p:outputLabel>
+							</p:column>
+						</div>
+					</p:dataTable>
+            </p:card>
+        </h:panelGroup>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="ui-g">
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-12">
+            <p:card>
+                <f:facet name="title">
+                    Estatísticas do Mês
+                </f:facet>
+           		<p:lineChart model="#{dashboardManager.acessosMesReferenciaChart}" style="width: 100%; max-height: 400px;"/>
+            </p:card>
+        </h:panelGroup>
+    </h:panelGroup>
+    
+    <h:panelGroup layout="block" styleClass="ui-g">
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-6">
+            <p:card>
+               	<p:pieChart model="#{dashboardManager.totalAcessosPeriodoChart}" style="width: 100%; max-height: 300px;"/>
+            </p:card>
+        </h:panelGroup>
+        
+        <h:panelGroup layout="block" styleClass="ui-g-12 ui-md-6">
+            <p:card>
+                <p:barChart model="#{dashboardManager.tempoMedioPermanenciaChart}" style="width: 100%; max-height: 300px;"/>
+            </p:card>
+        </h:panelGroup>
+    </h:panelGroup>
 
 
 	</ui:define>

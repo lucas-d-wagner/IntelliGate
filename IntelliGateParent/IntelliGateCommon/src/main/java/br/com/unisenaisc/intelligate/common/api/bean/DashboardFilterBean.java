@@ -7,34 +7,14 @@ public class DashboardFilterBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Date mesReferencia = new Date();
-	
-	private Date dataInicio = new Date();
-	
-	private Date dataFim = new Date();
+	private Date dataConsulta;
 
-	public Date getMesReferencia() {
-		return mesReferencia;
+	public Date getDataConsulta() {
+		return dataConsulta;
 	}
 
-	public void setMesReferencia(Date mesReferencia) {
-		this.mesReferencia = mesReferencia;
-	}
-	
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
+	public void setDataConsulta(Date dataConsulta) {
+		this.dataConsulta = dataConsulta;
 	}
 
 }

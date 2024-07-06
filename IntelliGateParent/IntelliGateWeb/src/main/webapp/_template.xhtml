@@ -27,22 +27,23 @@
             border-left: 1px solid #ccc;
             height: 100px;
         }
-	    .chart-container {
+	    .logo-menuitem {
 	        display: flex;
-	        flex-direction: column;
-	        justify-content: center;
 	        align-items: center;
 	    }
 	    
-	    .full-height-chart {
-	        width: 100%;
-	        height: 100%;
+	    .logo-image {
+	        max-height: 60px; /* Ajuste conforme necessário */
+	        max-width: 100%; /* Para garantir que a largura não ultrapasse o container */
+	        height: auto; /* Manter proporção */
+	        width: auto; /* Manter proporção */
 	    }
 	
-	    .half-height {
-	        height: 50vh; /* Ajuste conforme necessário */
+	    @media (max-width: 768px) {
+	        .logo-image {
+	            max-height: 30px; /* Ajuste conforme necessário para telas menores */
+	        }
 	    }
-	
    </style>
 </h:head>
 
@@ -51,10 +52,15 @@
 	<div id="cabecalho">
 
 		<h:form>
+			<p:growl id="messages"/>
 			<p:menubar>
-				<p:submenu label="Menu" icon="pi pi-fw pi-bars">
-					<p:menuitem value="Ínicio" icon="pi pi-fw pi-home"
-						action="/index?faces-redirect=true" />
+            	<p:menuitem action="/index?faces-redirect=true" styleClass="logo-menuitem">
+                	<h:graphicImage library="images" name="intelligate-logo.png" styleClass="logo-image" />
+				</p:menuitem>
+
+	            <p:divider layout="vertical"/>
+			
+				<p:submenu label="Cadastros" icon="pi pi-fw pi-bars">
 					<p:menuitem value="Usuários" icon="pi pi-fw pi-users"
 						action="/intelligate/usuario/listagemUsuario?faces-redirect=true" />
 					<p:menuitem value="Pessoas" icon="pi pi-fw pi-id-card"
@@ -63,9 +69,12 @@
 						action="/intelligate/veiculo/listagemVeiculo?faces-redirect=true" />
 					<p:menuitem value="Leitores" icon="pi pi-fw pi-sitemap"
 						action="/intelligate/leitor/listagemLeitor?faces-redirect=true" />
-					<p:menuitem value="Sair" icon="pi pi-fw pi-sign-out"
-						action="#{loginManager.logout}" process="@this" />
 				</p:submenu>
+				
+	            <p:divider layout="vertical"/>
+	            
+       			<p:menuitem value="Logout" icon="pi pi-fw pi-sign-out"
+					action="#{loginManager.logout}" process="@this" />
 			</p:menubar>
 			<br />
 		</h:form>

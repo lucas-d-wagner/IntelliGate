@@ -15,8 +15,6 @@ public class VeiculoLogAcessoBean implements Serializable {
 	
 	private Date dataEntrada;
 	
-	private Date dataSaida;
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -49,12 +47,4 @@ public class VeiculoLogAcessoBean implements Serializable {
 		this.dataEntrada = dataEntrada;
 	}
 
-	public Date getDataSaida() {
-		return dataSaida;
-	}
-
-	public void setDataSaida(Date dataSaida) {
-		this.dataSaida = dataSaida;
-	}
-	
 }

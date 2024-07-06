@@ -32,7 +32,7 @@ public class DashboardDataBean implements Serializable {
 	//Em minutos
 	private Long tempoMedioOcupacaoPeriodoMotos;
 	
-	private List<VeiculoLogAcessoBean> veiculosPeriodo;
+	private List<VeiculoLogAcessoBean> veiculosAcessados;
 
 	public Long getTotalCarros() {
 		return totalCarros;
@@ -122,12 +122,12 @@ public class DashboardDataBean implements Serializable {
 		this.tempoMedioOcupacaoPeriodoMotos = tempoMedioOcupacaoPeriodoMotos;
 	}
 
-	public List<VeiculoLogAcessoBean> getVeiculosPeriodo() {
-		return veiculosPeriodo;
+	public List<VeiculoLogAcessoBean> getVeiculosAcessados() {
+		return veiculosAcessados;
 	}
 
-	public void setVeiculosPeriodo(List<VeiculoLogAcessoBean> veiculosPeriodo) {
-		this.veiculosPeriodo = veiculosPeriodo;
+	public void setVeiculosAcessados(List<VeiculoLogAcessoBean> veiculosAcessados) {
+		this.veiculosAcessados = veiculosAcessados;
 	}
-	
+
 }

@@ -35,9 +35,7 @@ public class DashboardService {
 		List<LogAcesso> acessosDeHoje = buscarAcessosDeHoje();
 		List<LogAcesso> acessosDeHojeAindaAcessados = apenasAindaAcessados(acessosDeHoje);
 		
-		List<LogAcesso> acessosPeriodoFiltro = logAcessoRepository.findWithInterval(filter.getDataInicio(), filter.getDataFim());
-		
-		List<LogAcesso> acessosPorMes = buscarAcessosPorMes(filter.getMesReferencia());
+		List<LogAcesso> acessosPorMes = buscarAcessosMesReferencia(filter.getDataConsulta());
 		
 		Long totalCarros = getNroCarros(acessosDeHoje);
 		Long totalMotos = getNroMotos(acessosDeHoje);
@@ -48,15 +46,15 @@ public class DashboardService {
 		BigDecimal taxaOcupacaoCarros = getTaxaOcupacaoCarros(new BigDecimal(nroCarrosAcessados));
 		BigDecimal taxaOcupacaoMotos = getTaxaOcupacaoMotos(new BigDecimal(nroMotosAcessados));
 		
-		Long totalCarrosPeriodo = getNroCarros(acessosPeriodoFiltro);
-		Long totalMotosPeriodo = getNroMotos(acessosPeriodoFiltro);
+		Long totalCarrosPeriodo = getNroCarros(acessosPorMes);
+		Long totalMotosPeriodo = getNroMotos(acessosPorMes);
 		
-		Long tempoMediaPermanenciaCarros = getTempoMediaPermanenciaCarros(acessosPeriodoFiltro);
-		Long tempoMediaPermanenciaMotos = getTempoMediaPermanenciaMotos(acessosPeriodoFiltro);
+		Long tempoMediaPermanenciaCarros = getTempoMediaPermanenciaCarros(acessosPorMes);
+		Long tempoMediaPermanenciaMotos = getTempoMediaPermanenciaMotos(acessosPorMes);
 		
-		List<VeiculoLogAcessoBean> veiculosPeriodo = convertToBean(acessosPeriodoFiltro);
+		List<VeiculoLogAcessoBean> veiculosAcessados = convertToBean(acessosDeHojeAindaAcessados);
 		
-		List<VeiculosPorDataBean> veiculosPorDataList = getVeiculosPorData(acessosPorMes, filter.getMesReferencia());
+		List<VeiculosPorDataBean> veiculosPorDataList = getVeiculosPorData(acessosPorMes, filter.getDataConsulta());
 		
 		dashboardDataBean.setTotalCarros(totalCarros);
 		dashboardDataBean.setTotalMotos(totalMotos);
@@ -70,7 +68,7 @@ public class DashboardService {
 		dashboardDataBean.setTempoMedioOcupacaoPeriodoCarros(tempoMediaPermanenciaCarros);
 		dashboardDataBean.setTempoMedioOcupacaoPeriodoMotos(tempoMediaPermanenciaMotos);
 
-		dashboardDataBean.setVeiculosPeriodo(veiculosPeriodo);
+		dashboardDataBean.setVeiculosAcessados(veiculosAcessados);
 		
 		dashboardDataBean.setVeiculosPorDataList(veiculosPorDataList);
 		
@@ -99,7 +97,7 @@ public class DashboardService {
 		return notNull(acessos).stream().filter(l -> l.getDataHoraSaida() == null).collect(Collectors.toList());
 	}
 	
-	private List<LogAcesso> buscarAcessosPorMes(Date mesReferencia) {
+	private List<LogAcesso> buscarAcessosMesReferencia(Date mesReferencia) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(mesReferencia);
 
@@ -178,7 +176,6 @@ public class DashboardService {
 		veiculoLogAcessoBean.setPlaca(logAcesso.getVeiculo().getPlaca());
 		veiculoLogAcessoBean.setModelo(logAcesso.getVeiculo().getModelo());
 		veiculoLogAcessoBean.setDataEntrada(logAcesso.getDataHoraEntrada());
-		veiculoLogAcessoBean.setDataSaida(logAcesso.getDataHoraSaida());
 		
 		return veiculoLogAcessoBean;
 	}

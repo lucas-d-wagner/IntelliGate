@@ -1,9 +1,6 @@
 package br.com.unisenaisc.intelligate.web.manager.dashboard;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.YearMonth;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,9 +41,7 @@ public class DashboardManager extends AbstractFormManager {
 
 	private DashboardDataBean dashboardData = new DashboardDataBean();
 	
-	private Date dataInicio = new Date();
-	private Date dataFim = new Date();
-	private Date mesReferencia = new Date();
+	private Date dataConsulta = new Date();
 	
 	private LineChartModel acessosMesReferenciaChart;
 	private PieChartModel totalAcessosPeriodoChart;
@@ -54,19 +49,6 @@ public class DashboardManager extends AbstractFormManager {
  	
     @PostConstruct
     public void init() {
-        YearMonth yearMonth = YearMonth.now();
-
-    	LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
-        
-        // Fim do mês
-        LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59);
-        
-        // Convertendo para java.util.Date
-        dataInicio = Date.from(startOfMonth.atZone(ZoneId.systemDefault()).toInstant());
-        dataFim = Date.from(endOfMonth.atZone(ZoneId.systemDefault()).toInstant());
-
-    	
-    	
     	findDashboardData();
         
         createAcessosMesReferenciaChart();
@@ -91,7 +73,7 @@ public class DashboardManager extends AbstractFormManager {
     	List<String> labels = new ArrayList<>();
     	
     	for (VeiculosPorDataBean vpd : dashboardData.getVeiculosPorDataList()) {
-    		String dateString = new SimpleDateFormat("yyyy-MM-dd").format(vpd.getData());
+    		String dateString = new SimpleDateFormat("dd/MM").format(vpd.getData());
     		labels.add(dateString);
     		carros.add(vpd.getNroCarros());
     		motos.add(vpd.getNroMotos());
@@ -101,14 +83,14 @@ public class DashboardManager extends AbstractFormManager {
     	dataSetCarros.setData(carros);
     	dataSetCarros.setFill(false);
     	dataSetCarros.setLabel("Carros");
-        dataSetCarros.setBorderColor("rgb(75, 192, 192)");
+        dataSetCarros.setBorderColor("rgb(0, 102, 255)");
         dataSetCarros.setTension(0.1);
     	
     	LineChartDataSet dataSetMotos = new LineChartDataSet();
     	dataSetMotos.setData(motos);
     	dataSetMotos.setFill(false);
     	dataSetMotos.setLabel("Motos");
-    	dataSetMotos.setBorderColor("rgb(75, 192, 192)");
+    	dataSetMotos.setBorderColor("rgb(255, 153, 0)");
     	dataSetMotos.setTension(0.1);
 
     	data.addChartDataSet(dataSetCarros);
@@ -118,7 +100,8 @@ public class DashboardManager extends AbstractFormManager {
         LineChartOptions options = new LineChartOptions();
         Title title = new Title();
         title.setDisplay(true);
-        title.setText("Acessos mês de Julho");
+        title.setFontSize(18);
+        title.setText("Acessos por data");
         options.setTitle(title);
 
         acessosMesReferenciaChart.setOptions(options);
@@ -136,8 +119,8 @@ public class DashboardManager extends AbstractFormManager {
         dataSet.setData(values);
 
         List<String> bgColors = new ArrayList<>();
-        bgColors.add("rgb(54, 162, 235)");
-        bgColors.add("rgb(255, 205, 86)");
+        bgColors.add("rgb(0, 102, 255)");
+        bgColors.add("rgb(255, 153, 0)");
         dataSet.setBackgroundColor(bgColors);
 
         data.addChartDataSet(dataSet);
@@ -149,7 +132,8 @@ public class DashboardManager extends AbstractFormManager {
         PieChartOptions options = new PieChartOptions();
         Title title = new Title();
         title.setDisplay(true);
-        title.setText("Total ocupação periodo");
+        title.setFontSize(18);
+        title.setText("Total de Acessos");
         options.setTitle(title);
         
         
@@ -162,7 +146,7 @@ public class DashboardManager extends AbstractFormManager {
         ChartData data = new ChartData();
 
         BarChartDataSet barDataSet = new BarChartDataSet();
-        barDataSet.setLabel("Tempo médio de ocupação");
+        barDataSet.setLabel("");
 
         List<Number> values = new ArrayList<>();
         values.add(dashboardData.getTempoMedioOcupacaoPeriodoCarros());
@@ -170,13 +154,13 @@ public class DashboardManager extends AbstractFormManager {
         barDataSet.setData(values);
 
         List<String> bgColor = new ArrayList<>();
-        bgColor.add("rgba(255, 99, 132, 0.2)");
-        bgColor.add("rgba(255, 159, 64, 0.2)");
+        bgColor.add("rgba(0, 102, 255, 0.8)");
+        bgColor.add("rgba(255, 153, 0, 0.8)");
         barDataSet.setBackgroundColor(bgColor);
 
         List<String> borderColor = new ArrayList<>();
-        borderColor.add("rgb(255, 99, 132)");
-        borderColor.add("rgb(255, 159, 64)");
+        borderColor.add("rgb(0, 102, 255)");
+        borderColor.add("rgb(255, 153, 0)");
         barDataSet.setBorderColor(borderColor);
         barDataSet.setBorderWidth(1);
 
@@ -199,7 +183,8 @@ public class DashboardManager extends AbstractFormManager {
 
         Title title = new Title();
         title.setDisplay(true);
-        title.setText("Tempo médio de ocupação");
+        title.setFontSize(18);
+        title.setText("Tempo médio de ocupação (em minutos)");
         options.setTitle(title);
 
         Legend legend = new Legend();
@@ -219,13 +204,11 @@ public class DashboardManager extends AbstractFormManager {
 
         tempoMedioPermanenciaChart.setOptions(options);
 	}
-    
+	
     private DashboardFilterBean getFilter() {
     	DashboardFilterBean filter = new DashboardFilterBean();
     	
-    	filter.setDataInicio(dataInicio);
-    	filter.setDataFim(dataFim);
-    	filter.setMesReferencia(mesReferencia);
+    	filter.setDataConsulta(dataConsulta);
     	
     	return filter;
     }
@@ -242,30 +225,6 @@ public class DashboardManager extends AbstractFormManager {
 		this.dashboardData = dashboardData;
 	}
 	
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
-	public Date getMesReferencia() {
-		return mesReferencia;
-	}
-
-	public void setMesReferencia(Date mesReferencia) {
-		this.mesReferencia = mesReferencia;
-	}
-
 	public LineChartModel getAcessosMesReferenciaChart() {
 		return acessosMesReferenciaChart;
 	}
@@ -289,5 +248,5 @@ public class DashboardManager extends AbstractFormManager {
 	public void setTempoMedioPermanenciaChart(BarChartModel tempoMedioPermanenciaChart) {
 		this.tempoMedioPermanenciaChart = tempoMedioPermanenciaChart;
 	}
-	
+
 }
